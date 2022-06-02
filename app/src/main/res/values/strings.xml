@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">FinalProject</string>
+    <string name="app_name">Kareem</string>
+    <string name="title_name">Kareem</string>
+    <string name="testing_text">HELOO</string>
+    <string name="salam">Assalamualaikum 👋</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
