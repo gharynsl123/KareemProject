@@ -13,11 +13,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         _binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-//
-//        setSupportActionBar(binding.toolbar)
-//        binding.toolbarTitle.text= (binding.toolbar.title)
-//
-//        supportActionBar?.setDisplayShowTitleEnabled(false)
+
+        setSupportActionBar(binding.toolbarTitle)
+        binding.toolbarTitle.title= (binding.toolbarTitle.title)
+
+        supportActionBar?.setDisplayShowTitleEnabled(false)
 
     }
 }
