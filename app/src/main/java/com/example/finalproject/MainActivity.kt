@@ -2,7 +2,11 @@ package com.example.finalproject
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupWithNavController
 import com.example.finalproject.databinding.ActivityMainBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,6 +22,18 @@ class MainActivity : AppCompatActivity() {
         binding.toolbarTitle.title= (binding.toolbarTitle.title)
 
         supportActionBar?.setDisplayShowTitleEnabled(false)
+
+        val navView : BottomNavigationView = binding.bottomNav
+        val navController = findNavController(R.id.nav_host_fragment_activity_main)
+        val appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.quranFragment,
+                R.id.homeFragment,
+                R.id.profileFragment
+            )
+        )
+
+        navView.setupWithNavController(navController)
 
     }
 }

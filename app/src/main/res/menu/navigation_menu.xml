@@ -2,17 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/Quran"
+        android:id="@+id/quranFragment"
         android:icon="@drawable/quran"
         android:title="Juz Amma" />
 
     <item
-        android:id="@+id/Home"
+        android:id="@+id/homeFragment"
         android:icon="@drawable/house_icon"
         android:title="Home" />
 
     <item
-        android:id="@+id/Profile"
+        android:id="@+id/profileFragment"
         android:icon="@drawable/user"
         android:title="Profile" />
 
