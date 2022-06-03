@@ -1,24 +1,23 @@
-package com.example.finalproject
+package com.example.finalproject.ui.fragment
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.finalproject.databinding.FragmentHomeBinding
+import com.example.finalproject.databinding.FragmentQuranBinding
 
-class HomeFragment : Fragment() {
+class QuranFragment : Fragment() {
 
-    private var _binding: FragmentHomeBinding? = null
-    private val binding get() = _binding as FragmentHomeBinding
+    private var _binding: FragmentQuranBinding? = null
+    private val binding get() = _binding as FragmentQuranBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        _binding = FragmentQuranBinding.inflate(inflater, container, false)
         return binding.root
     }
-
 }

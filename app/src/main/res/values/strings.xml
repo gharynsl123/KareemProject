@@ -11,4 +11,13 @@
     <string name="descGradient">Gradient Background</string>
     <string name="tv_dzikir_pagi">Dzikir Pagi</string>
     <string name="number_surah">1</string>
+    <string name="greating_login">Hallo Again</string>
+    <string name="explane">Welcome Back you\'ve \nbeen missed</string>
+    <string name="registerHere">Not a member?</string>
+    <string name="register">Register Now</string>
+    <string name="login">Login</string>
+    <string name="register_greating">Creat an Account</string>
+    <string name="explanereg">lest\'s go become a member</string>
+    <string name="regis">Register</string>
+    <string name="logout">logout</string>
 </resources>

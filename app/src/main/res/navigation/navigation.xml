@@ -7,17 +7,17 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.finalproject.HomeFragment"
+        android:name="com.example.finalproject.ui.fragment.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/quranFragment"
-        android:name="com.example.finalproject.QuranFragment"
+        android:name="com.example.finalproject.ui.fragment.QuranFragment"
         android:label="fragment_quran"
         tools:layout="@layout/fragment_quran" />
     <fragment
         android:id="@+id/profileFragment"
-        android:name="com.example.finalproject.ProfileFragment"
+        android:name="com.example.finalproject.ui.fragment.ProfileFragment"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" />
 </navigation>
