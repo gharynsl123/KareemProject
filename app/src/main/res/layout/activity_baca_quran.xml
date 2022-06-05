@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.BacaQuran">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:fontFamily="@font/monts_bold_italic"
+            android:text="Kareem"
+            android:textColor="@color/app_name"
+            android:textSize="25sp" />
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="25dp"
+        android:background="@drawable/headline_quran"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:id="@+id/consHead"
+        app:layout_constraintTop_toBottomOf="@id/toolbar_title">
+
+
+        <TextView
+            android:id="@+id/titleSurah"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/pop_med"
+            android:text="Nama Surah"
+            android:textColor="@color/black"
+            android:textSize="21sp"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="25dp" />
+
+        <View
+            android:layout_width="150dp"
+            android:layout_height="4dp"
+            android:background="@color/backgroundCard"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/titleSurah" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -20,4 +20,6 @@
     <string name="explanereg">lest\'s go become a member</string>
     <string name="regis">Register</string>
     <string name="logout">logout</string>
+    <string name="search">search</string>
+    <string name="txt_search_hint">Search Ayahs</string>
 </resources>

@@ -1,7 +1,7 @@
 package com.example.finalproject.ui.main
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
@@ -20,11 +20,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setSupportActionBar(binding.toolbarTitle)
-        binding.toolbarTitle.title= (binding.toolbarTitle.title)
+        binding.toolbarTitle.title = (binding.toolbarTitle.title)
 
         supportActionBar?.setDisplayShowTitleEnabled(false)
 
-        val navView : BottomNavigationView = binding.bottomNav
+        val navView: BottomNavigationView = binding.bottomNav
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
         val appBarConfiguration = AppBarConfiguration(
             setOf(

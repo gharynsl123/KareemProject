@@ -1,10 +1,10 @@
 package com.example.finalproject.ui
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.view.WindowManager
+import androidx.appcompat.app.AppCompatActivity
 import com.example.finalproject.R
 
 class SplashScreen : AppCompatActivity() {
