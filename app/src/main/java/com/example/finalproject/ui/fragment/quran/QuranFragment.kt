@@ -29,7 +29,7 @@ class QuranFragment : Fragment(){
     ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentQuranBinding.inflate(inflater, container, false)
-
+//initi
         _viewModel = ViewModelProvider(this).get(QuranViewModel::class.java)
 
         viewModel.apply {
