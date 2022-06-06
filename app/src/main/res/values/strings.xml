@@ -22,4 +22,5 @@
     <string name="logout">logout</string>
     <string name="search">search</string>
     <string name="txt_search_hint">Search Ayahs</string>
+    <string name="notif">chek Notif</string>
 </resources>
