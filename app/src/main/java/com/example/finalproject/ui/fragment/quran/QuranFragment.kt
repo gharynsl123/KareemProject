@@ -8,11 +8,10 @@ import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.finalproject.R
-import com.example.finalproject.data.response.quranres.QuranResponse
+import com.example.finalproject.data.response.quranres.AyahsItem
 import com.example.finalproject.data.response.quranres.SurahsItem
 import com.example.finalproject.databinding.FragmentQuranBinding
-import com.example.finalproject.ui.BacaQuran
+import com.example.finalproject.ui.baca.BacaQuran
 import com.example.finalproject.utils.OnItemQuranClickCallback
 
 class QuranFragment : Fragment(){
@@ -83,7 +82,7 @@ class QuranFragment : Fragment(){
                         Intent(
                             activity,
                             BacaQuran::class.java
-                        ).putExtra(BacaQuran.EXTRA_DATA, item)
+                        ).putExtra(BacaQuran.SURAH_DATA, item)
                     )
                 }
             })

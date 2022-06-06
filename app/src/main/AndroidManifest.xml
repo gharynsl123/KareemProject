@@ -15,8 +15,9 @@
         android:theme="@style/Theme.FinalProject"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".ui.BacaQuran"
-            android:exported="false" />
+            android:name=".ui.baca.BacaQuran"
+            android:exported="true"
+            android:theme="@style/Theme.FinalProject.NoActionBar" />
         <activity
             android:name=".ui.petang.DzikirPetang"
             android:exported="true"

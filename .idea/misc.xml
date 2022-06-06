@@ -20,7 +20,8 @@
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.2864583333333333" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.2864583333333333" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.2864583333333333" />
-        <entry key="app/src/main/res/layout/fragment_quran.xml" value="0.2864583333333333" />
+        <entry key="app/src/main/res/layout/fragment_quran.xml" value="0.23588612874348958" />
+        <entry key="app/src/main/res/layout/item_baca_quran.xml" value="0.185699803249579" />
         <entry key="app/src/main/res/layout/item_list_dzikir.xml" value="0.2864583333333333" />
         <entry key="app/src/main/res/layout/item_list_juz_home.xml" value="0.2864583333333333" />
         <entry key="app/src/main/res/layout/item_list_quran.xml" value="0.2864583333333333" />
