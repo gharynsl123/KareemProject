@@ -1,24 +1,14 @@
 package com.example.finalproject.ui.fragment
 
-import android.app.NotificationChannel
-import android.app.NotificationManager
-import android.app.PendingIntent
-import android.content.Context
 import android.content.Intent
-import android.graphics.BitmapFactory
-import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
 import androidx.fragment.app.Fragment
-import com.example.finalproject.R
 import com.example.finalproject.databinding.FragmentProfileBinding
 import com.example.finalproject.ui.LoginActivity
-import com.example.finalproject.ui.main.MainActivity
 import com.google.firebase.auth.FirebaseAuth
 
 class ProfileFragment : Fragment() {

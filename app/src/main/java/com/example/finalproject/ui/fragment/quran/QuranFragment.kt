@@ -3,23 +3,25 @@ package com.example.finalproject.ui.fragment.quran
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.finalproject.data.response.quranres.AyahsItem
 import com.example.finalproject.data.response.quranres.SurahsItem
 import com.example.finalproject.databinding.FragmentQuranBinding
 import com.example.finalproject.ui.baca.BacaQuran
 import com.example.finalproject.utils.OnItemQuranClickCallback
 
-class QuranFragment : Fragment(){
+class QuranFragment : Fragment() {
 
     private var _binding: FragmentQuranBinding? = null
     private val binding get() = _binding as FragmentQuranBinding
 
 
+    //view
     private var _viewModel: QuranViewModel? = null
     private val viewModel get() = _viewModel as QuranViewModel
 
@@ -36,7 +38,7 @@ class QuranFragment : Fragment(){
             getData()
             activity?.let {
                 quranResponse.observe(it) { showData(it) }
-                isLoading.observe(it){ showLoading(it) }
+                isLoading.observe(it) { showLoading(it) }
                 isError.observe(it) { showError(it) }
             }
         }

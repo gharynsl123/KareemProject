@@ -8,7 +8,7 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Flowable
 import io.reactivex.rxjava3.schedulers.Schedulers
 
-class QuranViewModel: ViewModel() {
+class QuranViewModel : ViewModel() {
 
     val quranResponse = MutableLiveData<List<SurahsItem>?>()
     val isLoading = MutableLiveData<Boolean>()
@@ -70,7 +70,7 @@ class QuranViewModel: ViewModel() {
         getQuran({
             isLoading.value = false
             quranResponse.value = it
-        },{
+        }, {
             isLoading.value = true
             isError.value = it
         })

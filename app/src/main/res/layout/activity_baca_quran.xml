@@ -23,11 +23,11 @@
     </androidx.appcompat.widget.Toolbar>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/consHead"
         android:layout_width="match_parent"
+        android:layout_height="154dp"
         android:layout_marginHorizontal="25dp"
         android:background="@drawable/headline_quran"
-        android:layout_height="154dp"
-        android:id="@+id/consHead"
         app:layout_constraintTop_toBottomOf="@id/toolbar_title">
 
         <ImageView
@@ -43,11 +43,11 @@
             android:id="@+id/titleSurah"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingHorizontal="30dp"
+            android:layout_marginTop="20dp"
             android:fontFamily="@font/pop_med"
+            android:paddingHorizontal="30dp"
             android:text="Nama Surah"
             android:textColor="@color/white"
-            android:layout_marginTop="20dp"
             android:textSize="21sp"
             app:layout_constraintTop_toTopOf="parent"
             tools:layout_editor_absoluteX="25dp" />
@@ -67,8 +67,8 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/pop_med"
             android:paddingHorizontal="30dp"
-            android:text="Keluar imran"
             android:paddingVertical="20dp"
+            android:text="Keluar imran"
             android:textColor="@color/white"
             android:textSize="15sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -77,13 +77,13 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_dzikir_pagi"
+        android:id="@+id/rv_baca_quran"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/consHead"
-        android:layout_marginTop="25dp"
         tools:listitem="@layout/item_baca_quran" />
 
     <ProgressBar

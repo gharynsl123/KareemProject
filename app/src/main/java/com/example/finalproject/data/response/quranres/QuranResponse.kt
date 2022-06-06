@@ -13,7 +13,10 @@ data class QuranResponse(
 @Parcelize
 data class Data(
     @field:SerializedName("surahs")
-    val surahs: List<SurahsItem?>? = null
+    val surahs: List<SurahsItem?>? = null,
+
+    @field:SerializedName("ayahs")
+    val ayahs: List<AyahsItem?>? = null
 ) : Parcelable
 
 @Parcelize

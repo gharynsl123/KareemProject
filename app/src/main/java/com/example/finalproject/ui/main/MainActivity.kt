@@ -1,6 +1,5 @@
 package com.example.finalproject.ui.main
 
-import android.app.AlarmManager
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
@@ -9,7 +8,6 @@ import android.content.Intent
 import android.graphics.BitmapFactory
 import android.os.Build
 import android.os.Bundle
-import android.widget.TimePicker
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
@@ -19,7 +17,6 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.finalproject.R
 import com.example.finalproject.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -90,8 +87,8 @@ class MainActivity : AppCompatActivity() {
 
         val builder = NotificationCompat.Builder(this, CHANNEL_ID)
             .setSmallIcon(R.drawable.icon_app)
-            .setContentTitle("Dzikir Pagi")
-            .setContentText("Akhi Jangan Lupa Dzikir Pagi Akhi")
+            .setContentTitle("morning pray")
+            .setContentText("Don't Forget to pray in morning")
             .setLargeIcon(bitmapLargeIcon)
             .setStyle(NotificationCompat.BigPictureStyle().bigPicture(bitmap))
             .setContentIntent(pendingIntent)
