@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.*
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.finalproject.data.response.quranres.AyahsItem
@@ -23,6 +24,8 @@ class QuranFragment : Fragment(){
     private var _viewModel: QuranViewModel? = null
     private val viewModel get() = _viewModel as QuranViewModel
 
+    private val quranAdapter by lazy { QuranAdapter() }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -36,21 +39,25 @@ class QuranFragment : Fragment(){
             getData()
             activity?.let {
                 quranResponse.observe(it) { showData(it) }
-                isLoading.observe(it){ showLoading(it) }
+                isLoading.observe(it) { showLoading(it) }
                 isError.observe(it) { showError(it) }
+            }
+            quranResponse.observe(viewLifecycleOwner) {
+                showData(it)
             }
         }
         setupSearchView()
-
         return binding.root
     }
+
 
 
     private fun setupSearchView() {
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 query?.let {
-                    if (query.isNotEmpty()) viewModel.searchQuranByQuery(query)
+                    Log.i("Search", "$query")
+                    viewModel.searchQuranByQuery(query)
                 }
                 return true
             }
@@ -106,5 +113,7 @@ class QuranFragment : Fragment(){
     private fun showError(error: Throwable?) {
         Log.e("MainActivity", "showError: $error")
     }
+
+
 
 }
