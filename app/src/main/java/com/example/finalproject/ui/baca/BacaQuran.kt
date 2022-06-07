@@ -1,6 +1,5 @@
 package com.example.finalproject.ui.baca
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -10,8 +9,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.finalproject.data.response.quranres.AyahsItem
 import com.example.finalproject.data.response.quranres.SurahsItem
 import com.example.finalproject.databinding.ActivityBacaQuranBinding
-import com.example.finalproject.ui.fragment.quran.QuranAdapter
-import com.example.finalproject.utils.OnItemQuranClickCallback
 
 class BacaQuran : AppCompatActivity() {
 
@@ -33,14 +30,6 @@ class BacaQuran : AppCompatActivity() {
 
         _viewModel = ViewModelProvider(this).get(BacaanViewModel::class.java)
 
-        viewModel.apply {
-            getData()
-            bacaanResponse.observe(this@BacaQuran) { showData(it) }
-            isLoading.observe(this@BacaQuran) { showLoading(it) }
-            isError.observe(this@BacaQuran) { showError(it) }
-
-        }
-
         val title = intent.getParcelableExtra<SurahsItem>(SURAH_DATA)
         val surah = intent.getParcelableExtra<AyahsItem>(AYAT_DATA)
 
@@ -51,8 +40,11 @@ class BacaQuran : AppCompatActivity() {
             }
         }
         surah?.let {
-            binding.apply {
-
+            viewModel.apply {
+                getData()
+                bacaanResponse.observe(this@BacaQuran){showData(it)}
+                isLoading.observe(this@BacaQuran){ showLoading(it) }
+                isError.observe(this@BacaQuran) { showError(it) }
             }
         }
     }

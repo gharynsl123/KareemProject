@@ -1,4 +1,4 @@
-package com.example.finalproject.ui.fragment.quran
+package com.example.finalproject.ui.fragment.home
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -23,7 +23,7 @@ class AmmaAdapter : RecyclerView.Adapter<AmmaAdapter.MyViewHolder>() {
     private var onItemClickCallback: OnItemQuranClickCallback? = null
 
     fun setOnItemClickCallback(onItemQuranClickCallback: OnItemQuranClickCallback) {
-        this.onItemClickCallback = onItemClickCallback
+        this.onItemClickCallback = onItemQuranClickCallback
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = MyViewHolder(
@@ -32,7 +32,7 @@ class AmmaAdapter : RecyclerView.Adapter<AmmaAdapter.MyViewHolder>() {
     )
 
 
-    override fun onBindViewHolder(holder: AmmaAdapter.MyViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
         val data = listQuran[position]
         holder.binding.apply {
@@ -40,7 +40,6 @@ class AmmaAdapter : RecyclerView.Adapter<AmmaAdapter.MyViewHolder>() {
             englishName.text = data.englishName
             revelationType.text = data.revelationType
             englishMeaning.text = data.englishNameTranslation
-            tvArabic.text = data.name
 
             holder.itemView.setOnClickListener {
                 onItemClickCallback?.onItemClicked(data)

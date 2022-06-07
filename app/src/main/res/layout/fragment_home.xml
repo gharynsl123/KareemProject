@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:paddingLeft="25dp"
     android:paddingRight="25dp"
-    tools:context=".ui.fragment.HomeFragment">
+    tools:context=".ui.fragment.home.HomeFragment">
 
 
     <LinearLayout

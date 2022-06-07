@@ -70,7 +70,7 @@ class LoginActivity : AppCompatActivity() {
                 val firebaseUser = fireBaseAuth.currentUser
                 val email = firebaseUser!!.email
                 Toast.makeText(this, "Succesful Login as $email", Toast.LENGTH_LONG).show()
-                startActivity(Intent(this, ProfileFragment::class.java))
+                startActivity(Intent(this, MainActivity::class.java))
                 finish()
             }
             .addOnFailureListener {

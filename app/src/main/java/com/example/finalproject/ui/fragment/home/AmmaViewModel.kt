@@ -1,4 +1,4 @@
-package com.example.finalproject.ui.fragment.quran
+package com.example.finalproject.ui.fragment.home
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

@@ -1,6 +1,5 @@
 package com.example.finalproject.ui.fragment.quran
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.finalproject.data.network.quran.QuranApiClient

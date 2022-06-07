@@ -1,4 +1,4 @@
-package com.example.finalproject.ui.fragment
+package com.example.finalproject.ui.fragment.home
 
 import android.content.Intent
 import android.os.Bundle
@@ -12,8 +12,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.finalproject.data.response.quranres.SurahsItem
 import com.example.finalproject.databinding.FragmentHomeBinding
 import com.example.finalproject.ui.baca.BacaQuran
-import com.example.finalproject.ui.fragment.quran.AmmaViewModel
-import com.example.finalproject.ui.fragment.quran.QuranAdapter
 import com.example.finalproject.ui.pagi.DzikirPagi
 import com.example.finalproject.ui.petang.DzikirPetang
 import com.example.finalproject.utils.OnItemQuranClickCallback
@@ -66,7 +64,7 @@ class HomeFragment : Fragment() {
 
     private fun showData(data: List<SurahsItem>?) {
         binding.rvHome.apply {
-            val mAdapter = QuranAdapter()
+            val mAdapter = AmmaAdapter()
             mAdapter.setData(data)
             layoutManager = LinearLayoutManager(activity)
             adapter = mAdapter
