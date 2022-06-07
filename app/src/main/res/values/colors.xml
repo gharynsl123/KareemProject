@@ -8,6 +8,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+
+    <color name="colorPrimary">#322D2D</color>
+
     <color name="app_name">#78C778</color>
     <color name="statusTitle">#CFCFCF</color>
     <color name="NavBottom">#78C778</color>

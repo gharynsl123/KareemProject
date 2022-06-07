@@ -1,7 +1,6 @@
 package com.example.finalproject.data.network.quran
 
 import com.example.finalproject.BuildConfig
-import com.example.finalproject.data.network.dzikir.DzikirApiService
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

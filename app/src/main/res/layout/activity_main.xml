@@ -6,6 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".ui.main.MainActivity">
 
+    <Button
+        android:id="@+id/btnCheck"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/notif"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_nav" />
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_title"
         android:layout_width="match_parent"

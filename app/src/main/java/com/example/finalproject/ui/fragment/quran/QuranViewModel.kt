@@ -1,5 +1,6 @@
 package com.example.finalproject.ui.fragment.quran
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.finalproject.data.network.quran.QuranApiClient
@@ -8,7 +9,8 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Flowable
 import io.reactivex.rxjava3.schedulers.Schedulers
 
-class QuranViewModel: ViewModel() {
+class QuranViewModel : ViewModel() {
+
 
     val quranResponse = MutableLiveData<List<SurahsItem>?>()
     val isLoading = MutableLiveData<Boolean>()
@@ -52,6 +54,8 @@ class QuranViewModel: ViewModel() {
         )
     }
 
+
+
     fun getQuran(
         responHandle: (List<SurahsItem>?) -> Unit,
         errorHandler: (Throwable) -> Unit
@@ -70,7 +74,7 @@ class QuranViewModel: ViewModel() {
         getQuran({
             isLoading.value = false
             quranResponse.value = it
-        },{
+        }, {
             isLoading.value = true
             isError.value = it
         })

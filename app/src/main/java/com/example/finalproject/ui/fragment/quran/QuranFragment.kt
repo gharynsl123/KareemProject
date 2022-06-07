@@ -1,28 +1,26 @@
 package com.example.finalproject.ui.fragment.quran
 
-import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.finalproject.data.response.quranres.AyahsItem
 import com.example.finalproject.data.response.quranres.SurahsItem
 import com.example.finalproject.databinding.FragmentQuranBinding
 import com.example.finalproject.ui.baca.BacaQuran
 import com.example.finalproject.utils.OnItemQuranClickCallback
-import java.lang.Math.E
 
-class QuranFragment : Fragment(){
+class QuranFragment : Fragment() {
 
     private var _binding: FragmentQuranBinding? = null
     private val binding get() = _binding as FragmentQuranBinding
 
-
+    //view
     private var _viewModel: QuranViewModel? = null
     private val viewModel get() = _viewModel as QuranViewModel
 
@@ -31,15 +29,14 @@ class QuranFragment : Fragment(){
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding = FragmentQuranBinding.inflate(inflater, container, false)
-
         _viewModel = ViewModelProvider(this).get(QuranViewModel::class.java)
 
         viewModel.apply {
             getData()
-            activity?.let {
+            activity?.let { it ->
                 quranResponse.observe(it) { showData(it) }
                 isLoading.observe(it) { showLoading(it) }
                 isError.observe(it) { showError(it) }
@@ -47,8 +44,8 @@ class QuranFragment : Fragment(){
             quranResponse.observe(viewLifecycleOwner) {
                 showData(it)
             }
+            setupSearchView()
         }
-        setupSearchView()
         return binding.root
     }
 
@@ -58,7 +55,6 @@ class QuranFragment : Fragment(){
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 query?.let {
-                    Log.i("Search", "onQueryTextSubmit: $query")
                     viewModel.searchQuranByQuery(query)
                 }
                 return true
