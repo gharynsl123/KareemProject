@@ -16,7 +16,7 @@ data class Data(
 
     @field:SerializedName("surahs")
     val surahs: List<SurahsItem>? = null
-) : Parcelable, List<QuranResponse>
+) : Parcelable
 
 @Parcelize
 data class SurahsItem(

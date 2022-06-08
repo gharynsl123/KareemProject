@@ -15,10 +15,9 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 class QuranViewModel : ViewModel() {
 
 
-    val quranResponse = MutableLiveData<List<QuranResponse>?>()
+    val quranResponse = MutableLiveData<List<SurahsItem>?>()
     val isLoading = MutableLiveData<Boolean>()
     val isError = MutableLiveData<Throwable>()
-    var onResponse: MutableLiveData<Resource<List<QuranResponse>>> = MutableLiveData()
 
     val isSearchLoading = MutableLiveData(false)
     val isSearchError = MutableLiveData<Throwable?>()
@@ -43,7 +42,7 @@ class QuranViewModel : ViewModel() {
         loadData(
             QuranApiClient.getApiService().searchQuranByQuery(query),
             {
-                quranResponse.value = it.data
+                quranResponse.value = it.data?.surahs
                 isSearchError.value = null
                 isSearchLoading.value = false
             },
@@ -56,13 +55,13 @@ class QuranViewModel : ViewModel() {
     }
 
     fun getQuran(
-        responHandle: (List<QuranResponse>?) -> Unit,
+        responHandle: (List<SurahsItem>?) -> Unit,
         errorHandler: (Throwable) -> Unit
     ) {
         QuranApiClient.getApiService().getQuran().subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                responHandle(it.data)
+                responHandle(it.data?.surahs)
             }, {
                 errorHandler(it)
             })
