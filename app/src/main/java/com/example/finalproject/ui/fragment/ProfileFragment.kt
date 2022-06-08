@@ -31,11 +31,15 @@ class ProfileFragment : Fragment() {
             fireBaseAuth.signOut()
             chekUser()
         }
-
+//        binding.btnCheck.setOnClickListener {
+//            sendNotification()
+//        }
         return binding.root
 
 
     }
+
+
 
 
     private fun chekUser() {
@@ -52,5 +56,6 @@ class ProfileFragment : Fragment() {
             }
         }
     }
+
 
 }

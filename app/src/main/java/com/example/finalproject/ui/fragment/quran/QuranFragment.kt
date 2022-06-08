@@ -6,6 +6,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -24,6 +26,7 @@ class QuranFragment : Fragment() {
     private var _viewModel: QuranViewModel? = null
     private val viewModel get() = _viewModel as QuranViewModel
 
+
     private val quranAdapter by lazy { QuranAdapter() }
 
     override fun onCreateView(
@@ -41,9 +44,6 @@ class QuranFragment : Fragment() {
                 isLoading.observe(it) { showLoading(it) }
                 isError.observe(it) { showError(it) }
             }
-            quranResponse.observe(viewLifecycleOwner) {
-                showData(it)
-            }
             setupSearchView()
         }
         return binding.root
@@ -54,24 +54,29 @@ class QuranFragment : Fragment() {
     private fun setupSearchView() {
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                query?.let {
-                    viewModel.searchQuranByQuery(query)
-                }
-                return true
+//                query?.let {
+//                    viewModel.searchQuranByQuery(query)
+//                }
+//                return true
+                quranAdapter.filter.filter(query)
+                return false
             }
 
             override fun onQueryTextChange(query: String?): Boolean {
-                query?.let {
-                    if (query.isEmpty()) {
-                        binding.apply {
-                            viewModel.searchList.value = null
-                        }
-                    }
-                }
-                return true
+//                query?.let {
+//                    if (query.isEmpty()) {
+//                        binding.apply {
+//                            viewModel.searchList.value = null
+//                        }
+//                    }
+//                }
+//                return true
+                quranAdapter.filter.filter(query)
+                return false
             }
 
         })
+
     }
 
     private fun showData(data: List<SurahsItem>?) {
@@ -115,3 +120,5 @@ class QuranFragment : Fragment() {
 
 
 }
+
+

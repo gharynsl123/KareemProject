@@ -3,6 +3,7 @@ package com.example.finalproject.ui.fragment.quran
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.bumptech.glide.load.engine.Resource
 import com.example.finalproject.data.network.quran.QuranApiClient
 import com.example.finalproject.data.response.quranres.SurahsItem
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -15,6 +16,7 @@ class QuranViewModel : ViewModel() {
     val quranResponse = MutableLiveData<List<SurahsItem>?>()
     val isLoading = MutableLiveData<Boolean>()
     val isError = MutableLiveData<Throwable>()
+    var onResponse: MutableLiveData<Resource<List<SurahsItem>>> = MutableLiveData()
 
 
     // search
@@ -79,5 +81,7 @@ class QuranViewModel : ViewModel() {
             isError.value = it
         })
     }
-
+    fun getQuranFeed(): LiveData<Resource<List<SurahsItem>>>{
+        return onResponse
+    }
 }

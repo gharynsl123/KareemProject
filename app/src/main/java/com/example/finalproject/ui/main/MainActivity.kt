@@ -39,9 +39,6 @@ class MainActivity : AppCompatActivity() {
 
         //Notification
         createNotificationChannel()
-        binding.btnCheck.setOnClickListener {
-            sendNotification()
-        }
 
         val navView: BottomNavigationView = binding.bottomNav
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
@@ -71,31 +68,5 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun sendNotification() {
 
-        val intent = Intent(this, MainActivity::class.java).apply {
-            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-
-        }
-
-        val pendingIntent: PendingIntent = PendingIntent.getActivity(this, 0, intent, 0)
-
-        val bitmap =
-            BitmapFactory.decodeResource(applicationContext.resources, R.drawable.dzikir_pagi)
-        val bitmapLargeIcon =
-            BitmapFactory.decodeResource(applicationContext.resources, R.drawable.icon_app)
-
-        val builder = NotificationCompat.Builder(this, CHANNEL_ID)
-            .setSmallIcon(R.drawable.icon_app)
-            .setContentTitle("morning pray")
-            .setContentText("Don't Forget to pray in morning")
-            .setLargeIcon(bitmapLargeIcon)
-            .setStyle(NotificationCompat.BigPictureStyle().bigPicture(bitmap))
-            .setContentIntent(pendingIntent)
-            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-        with(NotificationManagerCompat.from(this)) {
-            notify(notificationId, builder.build())
-        }
     }
-
-}
