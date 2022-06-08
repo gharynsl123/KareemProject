@@ -24,6 +24,9 @@ class QuranFragment : Fragment() {
     private var _viewModel: QuranViewModel? = null
     private val viewModel get() = _viewModel as QuranViewModel
 
+
+    private val quranAdapter by lazy { QuranAdapter() }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -52,21 +55,25 @@ class QuranFragment : Fragment() {
     private fun setupSearchView() {
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                query?.let {
-                    viewModel.searchQuranByQuery(query)
-                }
-                return true
+//                query?.let {
+//                    viewModel.searchQuranByQuery(query)
+//                }
+//                return true
+                quranAdapter.filter.filter(query)
+                return false
             }
 
             override fun onQueryTextChange(query: String?): Boolean {
-                query?.let {
-                    if (query.isEmpty()) {
-                        binding.apply {
-                            viewModel.searchList.value = null
-                        }
-                    }
-                }
-                return true
+//                query?.let {
+//                    if (query.isEmpty()) {
+//                        binding.apply {
+//                            viewModel.searchList.value = null
+//                        }
+//                    }
+//                }
+//                return true
+                quranAdapter.filter.filter(query)
+                return false
             }
 
         })

@@ -23,7 +23,7 @@ data class Data(
 data class SurahsItem(
 
     @field:SerializedName("number")
-    val number: Int? = null,
+    val number: String? = null,
 
     @field:SerializedName("englishName")
     val englishName: String? = null,
