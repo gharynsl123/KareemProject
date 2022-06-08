@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.finalproject.data.response.quranres.SurahsItem
 import com.example.finalproject.databinding.FragmentQuranBinding
 import com.example.finalproject.ui.baca.BacaQuran
-import com.example.finalproject.utils.OnItemQuranClickCallback
+import com.example.finalproject.utils.quranutil.OnItemQuranClickCallback
 
 class QuranFragment : Fragment() {
 
@@ -49,7 +49,6 @@ class QuranFragment : Fragment() {
         }
         return binding.root
     }
-
 
 
     private fun setupSearchView() {
@@ -116,7 +115,6 @@ class QuranFragment : Fragment() {
     private fun showError(error: Throwable?) {
         Log.e("MainActivity", "showError: $error")
     }
-
 
 
 }

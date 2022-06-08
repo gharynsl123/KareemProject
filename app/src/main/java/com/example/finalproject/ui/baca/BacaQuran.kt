@@ -31,25 +31,22 @@ class BacaQuran : AppCompatActivity() {
         _viewModel = ViewModelProvider(this).get(BacaanViewModel::class.java)
 
         val title = intent.getParcelableExtra<SurahsItem>(SURAH_DATA)
-        val surah = intent.getParcelableExtra<AyahsItem>(AYAT_DATA)
 
         title?.let {
             binding.apply {
                 titleSurah.text = title.englishName
                 titleMeining.text = title.englishNameTranslation
             }
-        }
-        surah?.let {
             viewModel.apply {
                 getData()
-                bacaanResponse.observe(this@BacaQuran){showData(it)}
-                isLoading.observe(this@BacaQuran){ showLoading(it) }
+                bacaanResponse.observe(this@BacaQuran) { showData(it) }
+                isLoading.observe(this@BacaQuran) { showLoading(it) }
                 isError.observe(this@BacaQuran) { showError(it) }
             }
         }
     }
 
-    private fun showData(data: List<AyahsItem>?) {
+    private fun showData(data: List<AyahsItem>) {
         binding.rvBacaQuran.apply {
             val mAdapter = BacaanQuranAdapter()
             mAdapter.setData(data)

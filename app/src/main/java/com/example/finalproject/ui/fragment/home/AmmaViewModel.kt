@@ -13,7 +13,6 @@ class AmmaViewModel : ViewModel() {
     val isError = MutableLiveData<Throwable>()
 
 
-
     fun getQuran(
         responHandle: (List<SurahsItem>?) -> Unit,
         errorHandler: (Throwable) -> Unit
@@ -32,7 +31,7 @@ class AmmaViewModel : ViewModel() {
         getQuran({
             isLoading.value = false
             quranResponse.value = it
-        },{
+        }, {
             isLoading.value = true
             isError.value = it
         })

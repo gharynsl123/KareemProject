@@ -1,10 +1,10 @@
 package com.example.finalproject.ui.fragment.quran
 
 import androidx.recyclerview.widget.DiffUtil
-import com.example.finalproject.data.response.quranres.QuranResponse
 import com.example.finalproject.data.response.quranres.SurahsItem
 
-class DiffCallback(val oldList: List<SurahsItem>,val newList: List<SurahsItem>) : DiffUtil.Callback() {
+class DiffCallback(val oldList: List<SurahsItem>, val newList: List<SurahsItem>) :
+    DiffUtil.Callback() {
     override fun getOldListSize() = oldList.size
 
     override fun getNewListSize() = newList.size

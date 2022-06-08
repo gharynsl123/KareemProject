@@ -19,7 +19,7 @@ class BacaanViewModel : ViewModel() {
         QuranApiClient.getApiService().getQuran().subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                responHandle(it.data?.ayahs as List<AyahsItem>)
+                responHandle(it.data?.surahs as List<AyahsItem>)
             }, {
                 errorHandler(it)
             })

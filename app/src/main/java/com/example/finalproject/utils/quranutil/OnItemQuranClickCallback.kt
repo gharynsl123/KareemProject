@@ -1,4 +1,4 @@
-package com.example.finalproject.utils
+package com.example.finalproject.utils.quranutil
 
 import com.example.finalproject.data.response.quranres.SurahsItem
 

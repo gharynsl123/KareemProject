@@ -2,24 +2,23 @@ package com.example.finalproject.ui
 
 import android.app.ProgressDialog
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Patterns
 import android.widget.Toast
-import com.example.finalproject.ui.fragment.ProfileFragment
+import androidx.appcompat.app.AppCompatActivity
 import com.example.finalproject.databinding.ActivityLoginBinding
 import com.example.finalproject.ui.main.MainActivity
 import com.google.firebase.auth.FirebaseAuth
 
 class LoginActivity : AppCompatActivity() {
 
-    private var _binding : ActivityLoginBinding? = null
+    private var _binding: ActivityLoginBinding? = null
     private val binding get() = _binding as ActivityLoginBinding
 
-    private lateinit var prossesDialog : ProgressDialog
+    private lateinit var prossesDialog: ProgressDialog
 
-    private lateinit var fireBaseAuth : FirebaseAuth
+    private lateinit var fireBaseAuth: FirebaseAuth
 
     private var email = ""
     private var password = ""
@@ -53,11 +52,11 @@ class LoginActivity : AppCompatActivity() {
         email = binding.tvInputEmail.text.toString().trim()
         password = binding.tvInputSandi.text.toString().trim()
 
-        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             binding.tvInputEmail.error = "Invalid Email Formated"
-        }else if (TextUtils.isEmpty(password)){
+        } else if (TextUtils.isEmpty(password)) {
             binding.tvInputSandi.error = "Please Enter password"
-        }else{
+        } else {
             fireBaseLogin()
         }
     }
@@ -81,7 +80,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun checkUser() {
         val firebaseUser = fireBaseAuth.currentUser
-        if (firebaseUser != null){
+        if (firebaseUser != null) {
             startActivity(Intent(this, MainActivity::class.java))
             finish()
         }

@@ -37,8 +37,7 @@ class MainActivity : AppCompatActivity() {
 
         supportActionBar?.setDisplayShowTitleEnabled(false)
 
-        //Notification
-        createNotificationChannel()
+
 
         val navView: BottomNavigationView = binding.bottomNav
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
@@ -52,21 +51,4 @@ class MainActivity : AppCompatActivity() {
 
         navView.setupWithNavController(navController)
     }
-
-    private fun createNotificationChannel() {
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val title = "Notification Title"
-            val descriptionText = "Notification Description"
-            val important = NotificationManager.IMPORTANCE_DEFAULT
-            val channel = NotificationChannel(CHANNEL_ID, title, important).apply {
-                description = descriptionText
-            }
-            val notificationManager: NotificationManager =
-                getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-            notificationManager.createNotificationChannel(channel)
-        }
-    }
-
-
-    }
+}

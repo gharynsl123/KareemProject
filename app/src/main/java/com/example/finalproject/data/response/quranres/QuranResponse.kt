@@ -6,17 +6,16 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class QuranResponse(
+
     @field:SerializedName("data")
     val data: Data? = null,
 ) : Parcelable
 
 @Parcelize
 data class Data(
-    @field:SerializedName("surahs")
-    val surahs: List<SurahsItem?>? = null,
 
-    @field:SerializedName("ayahs")
-    val ayahs: List<AyahsItem?>? = null
+    @field:SerializedName("surahs")
+    val surahs: List<SurahsItem?>? = null
 ) : Parcelable
 
 @Parcelize
@@ -41,12 +40,8 @@ data class SurahsItem(
     val englishNameTranslation: String? = null
 ) : Parcelable
 
-
 @Parcelize
 data class AyahsItem(
-
-    @field:SerializedName("number")
-    val number: Int? = null,
 
     @field:SerializedName("text")
     val text: String? = null,
@@ -57,4 +52,3 @@ data class AyahsItem(
     @field:SerializedName("juz")
     val juz: Int? = null
 ) : Parcelable
-

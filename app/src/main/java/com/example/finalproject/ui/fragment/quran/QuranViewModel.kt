@@ -1,5 +1,6 @@
 package com.example.finalproject.ui.fragment.quran
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.bumptech.glide.load.engine.Resource
@@ -73,12 +74,12 @@ class QuranViewModel : ViewModel() {
         getQuran({
             isLoading.value = false
             quranResponse.value = it
-        },{
+        }, {
             isLoading.value = true
             isError.value = it
         })
     }
-    fun getQuranFeed(): LiveData<Resource<List<SurahsItem>>>{
+    fun getQuranFeed(): LiveData<Resource<List<SurahsItem>>> {
         return onResponse
     }
 }

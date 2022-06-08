@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finalproject.data.response.quranres.AyahsItem
 import com.example.finalproject.databinding.ItemBacaQuranBinding
-import com.example.finalproject.utils.OnItemBacaQuranClickCallback
+import com.example.finalproject.utils.quranutil.OnItemBacaQuranClickCallback
 
 class BacaanQuranAdapter : RecyclerView.Adapter<BacaanQuranAdapter.MyViewHolder>() {
 

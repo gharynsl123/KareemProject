@@ -36,10 +36,10 @@
             android:id="@+id/tvArabic"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
             android:fontFamily="@font/amir_bold"
             android:text="arabic"
             android:textSize="16sp"
-            android:layout_marginBottom="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/relativeLayout" />

@@ -14,7 +14,7 @@ import com.example.finalproject.databinding.FragmentHomeBinding
 import com.example.finalproject.ui.baca.BacaQuran
 import com.example.finalproject.ui.pagi.DzikirPagi
 import com.example.finalproject.ui.petang.DzikirPetang
-import com.example.finalproject.utils.OnItemQuranClickCallback
+import com.example.finalproject.utils.quranutil.OnItemQuranClickCallback
 
 class HomeFragment : Fragment() {
 
@@ -38,7 +38,7 @@ class HomeFragment : Fragment() {
             getData()
             activity?.let {
                 quranResponse.observe(it) { showData(it) }
-                isLoading.observe(it){ showLoading(it) }
+                isLoading.observe(it) { showLoading(it) }
                 isError.observe(it) { showError(it) }
             }
         }
