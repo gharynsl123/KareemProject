@@ -24,9 +24,6 @@ class QuranFragment : Fragment() {
     private var _viewModel: QuranViewModel? = null
     private val viewModel get() = _viewModel as QuranViewModel
 
-
-    private val quranAdapter by lazy { QuranAdapter() }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -38,33 +35,25 @@ class QuranFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val mAdapter = QuranAdapter()
+        val mAdapter = QuranAdapter {
+            startActivity(
+                Intent(
+                    activity,
+                    BacaQuran::class.java
+                ).putExtra(BacaQuran.SURAH_DATA, it)
+            )
+        }
         binding.rvQuran.layoutManager = LinearLayoutManager(activity)
         binding.rvQuran.adapter = mAdapter
-        mAdapter.setOnItemClickCallback(object : OnItemQuranClickCallback {
-            override fun onItemClicked(item: SurahsItem) {
-                startActivity(
-                    Intent(
-                        activity,
-                        BacaQuran::class.java
-                    ).putExtra(BacaQuran.SURAH_DATA, item)
-                )
-            }
-        })
 
         _viewModel = ViewModelProvider(this).get(QuranViewModel::class.java)
 
         viewModel.apply {
             getData()
-            activity?.let { it ->
-                quranResponse.observe(it) { mAdapter.setData(it) }
-                isLoading.observe(it) { showLoading(it) }
-                isError.observe(it) { showError(it) }
-            }
-            quranResponse.observe(viewLifecycleOwner) {
-                mAdapter.setData(it)
-                Log.d("Hasil", it?.toString()!!)
-            }
+            quranResponse.observe(viewLifecycleOwner) { mAdapter.setData(it) }
+            isLoading.observe(viewLifecycleOwner) { showLoading(it) }
+            isError.observe(viewLifecycleOwner) { showError(it) }
+
             setupSearchView()
         }
     }

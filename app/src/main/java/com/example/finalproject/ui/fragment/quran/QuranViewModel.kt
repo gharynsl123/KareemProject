@@ -1,10 +1,12 @@
 package com.example.finalproject.ui.fragment.quran
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.bumptech.glide.load.engine.Resource
 import com.example.finalproject.data.network.quran.QuranApiClient
+import com.example.finalproject.data.response.quranres.QuranResponse
 import com.example.finalproject.data.response.quranres.SurahsItem
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Flowable
@@ -13,10 +15,10 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 class QuranViewModel : ViewModel() {
 
 
-    val quranResponse = MutableLiveData<List<SurahsItem>?>()
+    val quranResponse = MutableLiveData<List<QuranResponse>?>()
     val isLoading = MutableLiveData<Boolean>()
     val isError = MutableLiveData<Throwable>()
-    var onResponse: MutableLiveData<Resource<List<SurahsItem>>> = MutableLiveData()
+    var onResponse: MutableLiveData<Resource<List<QuranResponse>>> = MutableLiveData()
 
     val isSearchLoading = MutableLiveData(false)
     val isSearchError = MutableLiveData<Throwable?>()
@@ -41,7 +43,7 @@ class QuranViewModel : ViewModel() {
         loadData(
             QuranApiClient.getApiService().searchQuranByQuery(query),
             {
-                quranResponse.value = it.data?.surahs
+                quranResponse.value = it.data
                 isSearchError.value = null
                 isSearchLoading.value = false
             },
@@ -54,13 +56,13 @@ class QuranViewModel : ViewModel() {
     }
 
     fun getQuran(
-        responHandle: (List<SurahsItem>?) -> Unit,
+        responHandle: (List<QuranResponse>?) -> Unit,
         errorHandler: (Throwable) -> Unit
     ) {
         QuranApiClient.getApiService().getQuran().subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                responHandle(it.data?.surahs as List<SurahsItem>?)
+                responHandle(it.data)
             }, {
                 errorHandler(it)
             })
@@ -76,7 +78,5 @@ class QuranViewModel : ViewModel() {
             isError.value = it
         })
     }
-    fun getQuranFeed(): LiveData<Resource<List<SurahsItem>>> {
-        return onResponse
-    }
+
 }

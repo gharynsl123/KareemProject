@@ -9,11 +9,12 @@ import com.example.finalproject.data.response.quranres.SurahsItem
 import com.example.finalproject.databinding.ItemListQuranBinding
 import com.example.finalproject.utils.quranutil.OnItemQuranClickCallback
 
-class QuranAdapter : RecyclerView.Adapter<QuranAdapter.MyViewHolder>(), Filterable {
+class QuranAdapter(private val click: (SurahsItem) -> Unit) : RecyclerView.Adapter<QuranAdapter.MyViewHolder>(),
+    Filterable {
     private var listQuran = ArrayList<SurahsItem>()
 
-    private var quranList : ArrayList<SurahsItem> = ArrayList()
-    private var quranListFiltered : ArrayList<SurahsItem> = ArrayList()
+    private var quranList: ArrayList<SurahsItem> = ArrayList()
+    private var quranListFiltered: ArrayList<SurahsItem> = ArrayList()
 
     fun setData(dataQuran: List<SurahsItem>?) {
 //        if (dataQuran == null) return
@@ -25,11 +26,6 @@ class QuranAdapter : RecyclerView.Adapter<QuranAdapter.MyViewHolder>(), Filterab
         notifyDataSetChanged()
     }
 
-    private var onItemClickCallback: OnItemQuranClickCallback? = null
-
-    fun setOnItemClickCallback(onItemClickCallback: OnItemQuranClickCallback) {
-        this.onItemClickCallback = onItemClickCallback
-    }
 
     class MyViewHolder(val binding: ItemListQuranBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -50,14 +46,14 @@ class QuranAdapter : RecyclerView.Adapter<QuranAdapter.MyViewHolder>(), Filterab
             tvArabic.text = data.name
 
             holder.itemView.setOnClickListener {
-                onItemClickCallback?.onItemClicked(data)
+                click(data)
             }
         }
 
     }
 
     override fun getItemCount(): Int {
-    return quranListFiltered.size
+        return quranListFiltered.size
     }
 
     override fun getFilter(): android.widget.Filter {
@@ -69,7 +65,7 @@ class QuranAdapter : RecyclerView.Adapter<QuranAdapter.MyViewHolder>(), Filterab
                     quranList
                         .filter {
                             (it.number?.contains(constraint!!))
-                                    (it.englishName?.contains(constraint!!) == true)
+                            (it.englishName?.contains(constraint!!) == true)
 
                         }
                         .forEach { filteredList.add(it) }
