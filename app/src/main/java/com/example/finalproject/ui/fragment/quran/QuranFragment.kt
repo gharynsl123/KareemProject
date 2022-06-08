@@ -1,6 +1,5 @@
 package com.example.finalproject.ui.fragment.quran
 
-import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -15,7 +14,6 @@ import com.example.finalproject.data.response.quranres.SurahsItem
 import com.example.finalproject.databinding.FragmentQuranBinding
 import com.example.finalproject.ui.baca.BacaQuran
 import com.example.finalproject.utils.OnItemQuranClickCallback
-import java.lang.Math.E
 
 class QuranFragment : Fragment() {
 
@@ -44,8 +42,8 @@ class QuranFragment : Fragment() {
             quranResponse.observe(viewLifecycleOwner) {
                 showData(it)
             }
+            setupSearchView()
         }
-        setupSearchView()
         return binding.root
     }
 
@@ -55,7 +53,6 @@ class QuranFragment : Fragment() {
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 query?.let {
-                    Log.i("Search", "onQueryTextSubmit: $query")
                     viewModel.searchQuranByQuery(query)
                 }
                 return true

@@ -2,7 +2,9 @@ package com.example.finalproject.ui.fragment.quran
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.example.finalproject.data.response.quranres.QuranResponse
 import com.example.finalproject.data.response.quranres.SurahsItem
 import com.example.finalproject.databinding.ItemListQuranBinding
 import com.example.finalproject.utils.OnItemQuranClickCallback
