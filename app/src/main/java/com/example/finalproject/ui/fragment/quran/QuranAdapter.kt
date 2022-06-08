@@ -1,5 +1,6 @@
 package com.example.finalproject.ui.fragment.quran
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Filterable
@@ -40,7 +41,7 @@ class QuranAdapter : RecyclerView.Adapter<QuranAdapter.MyViewHolder>(), Filterab
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
 
-        val data = listQuran[position]
+        val data = quranListFiltered[position]
         holder.binding.apply {
             numberSurah.text = data.number.toString()
             englishName.text = data.englishName
@@ -55,7 +56,9 @@ class QuranAdapter : RecyclerView.Adapter<QuranAdapter.MyViewHolder>(), Filterab
 
     }
 
-    override fun getItemCount() = listQuran.size
+    override fun getItemCount(): Int {
+    return quranListFiltered.size
+    }
 
     override fun getFilter(): android.widget.Filter {
         return object : android.widget.Filter() {
@@ -76,6 +79,7 @@ class QuranAdapter : RecyclerView.Adapter<QuranAdapter.MyViewHolder>(), Filterab
                 return FilterResults().apply { values = quranListFiltered }
             }
 
+            @SuppressLint("NotifyDataSetChanged")
             override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
                 quranListFiltered = if (results?.values == null)
                     ArrayList()

@@ -31,71 +31,61 @@ class QuranFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        // Inflate the layout for this fragment
         _binding = FragmentQuranBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val mAdapter = QuranAdapter()
+        binding.rvQuran.layoutManager = LinearLayoutManager(activity)
+        binding.rvQuran.adapter = mAdapter
+        mAdapter.setOnItemClickCallback(object : OnItemQuranClickCallback {
+            override fun onItemClicked(item: SurahsItem) {
+                startActivity(
+                    Intent(
+                        activity,
+                        BacaQuran::class.java
+                    ).putExtra(BacaQuran.SURAH_DATA, item)
+                )
+            }
+        })
+
         _viewModel = ViewModelProvider(this).get(QuranViewModel::class.java)
 
         viewModel.apply {
             getData()
             activity?.let { it ->
-                quranResponse.observe(it) { showData(it) }
+                quranResponse.observe(it) { mAdapter.setData(it) }
                 isLoading.observe(it) { showLoading(it) }
                 isError.observe(it) { showError(it) }
             }
             quranResponse.observe(viewLifecycleOwner) {
-                showData(it)
+                mAdapter.setData(it)
+                Log.d("Hasil", it?.toString()!!)
             }
             setupSearchView()
         }
-        return binding.root
     }
 
 
     private fun setupSearchView() {
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-//                query?.let {
-//                    viewModel.searchQuranByQuery(query)
-//                }
-//                return true
-                quranAdapter.filter.filter(query)
-                return false
+                Log.d("ShowData", query!!)
+                query.let {
+                    viewModel.searchQuranByQuery(query)
+                }
+
+                return true
             }
 
             override fun onQueryTextChange(query: String?): Boolean {
-//                query?.let {
-//                    if (query.isEmpty()) {
-//                        binding.apply {
-//                            viewModel.searchList.value = null
-//                        }
-//                    }
-//                }
-//                return true
-                quranAdapter.filter.filter(query)
                 return false
             }
 
         })
-    }
-
-    private fun showData(data: List<SurahsItem>?) {
-        binding.rvQuran.apply {
-            val mAdapter = QuranAdapter()
-            mAdapter.setData(data)
-            layoutManager = LinearLayoutManager(activity)
-            adapter = mAdapter
-
-            mAdapter.setOnItemClickCallback(object : OnItemQuranClickCallback {
-                override fun onItemClicked(item: SurahsItem) {
-                    startActivity(
-                        Intent(
-                            activity,
-                            BacaQuran::class.java
-                        ).putExtra(BacaQuran.SURAH_DATA, item)
-                    )
-                }
-            })
-        }
     }
 
     private fun showLoading(isLoading: Boolean?) {

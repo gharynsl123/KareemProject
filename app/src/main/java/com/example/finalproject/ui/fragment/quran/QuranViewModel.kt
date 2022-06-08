@@ -18,9 +18,6 @@ class QuranViewModel : ViewModel() {
     val isError = MutableLiveData<Throwable>()
     var onResponse: MutableLiveData<Resource<List<SurahsItem>>> = MutableLiveData()
 
-
-    // search
-    val searchList = MutableLiveData<List<SurahsItem>?>()
     val isSearchLoading = MutableLiveData(false)
     val isSearchError = MutableLiveData<Throwable?>()
 
@@ -44,12 +41,12 @@ class QuranViewModel : ViewModel() {
         loadData(
             QuranApiClient.getApiService().searchQuranByQuery(query),
             {
-                searchList.value = it.data?.surahs as List<SurahsItem>?
+                quranResponse.value = it.data?.surahs
                 isSearchError.value = null
                 isSearchLoading.value = false
             },
             {
-                searchList.value = null
+                quranResponse.value = null
                 isSearchError.value = it
                 isSearchLoading.value = false
             }
