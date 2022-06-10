@@ -5,9 +5,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finalproject.data.response.DzikirPetangResponseItem
 import com.example.finalproject.databinding.ItemListDzikirBinding
-import com.example.finalproject.utils.OnItemPetangClickCallback
 
-class DzikirPetangAdapter : RecyclerView.Adapter<DzikirPetangAdapter.MyViewHolder>() {
+class DzikirPetangAdapter(private val click: (DzikirPetangResponseItem) -> Unit) :
+    RecyclerView.Adapter<DzikirPetangAdapter.MyViewHolder>() {
 
     private var listPetang = ArrayList<DzikirPetangResponseItem>()
 
@@ -15,12 +15,6 @@ class DzikirPetangAdapter : RecyclerView.Adapter<DzikirPetangAdapter.MyViewHolde
         if (dataPetang == null) return
         listPetang.clear()
         listPetang.addAll(dataPetang)
-    }
-
-    private var onItemClickCallBack: OnItemPetangClickCallback? = null
-
-    fun setOnItemClickCallback(onItemClickCallback: OnItemPetangClickCallback) {
-        this.onItemClickCallBack = onItemClickCallback
     }
 
     class MyViewHolder(val binding: ItemListDzikirBinding) : RecyclerView.ViewHolder(binding.root)
@@ -36,7 +30,7 @@ class DzikirPetangAdapter : RecyclerView.Adapter<DzikirPetangAdapter.MyViewHolde
             tvMeaning.text = data.terjemahan
 
             holder.itemView.setOnClickListener {
-                onItemClickCallBack?.onItemClicked(data)
+                click(data)
             }
         }
     }

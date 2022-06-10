@@ -10,21 +10,15 @@ import kotlin.Int as Int1
 import kotlin.Int.Companion as Int
 
 
-class AmmaAdapter : RecyclerView.Adapter<AmmaAdapter.MyViewHolder>() {
-    class MyViewHolder(val binding: ItemListQuranBinding) : RecyclerView.ViewHolder(binding.root)
+class AmmaAdapter (private val click: (SurahsItem) -> Unit) : RecyclerView.Adapter<AmmaAdapter.MyViewHolder>() {
 
+    class MyViewHolder(val binding: ItemListQuranBinding) : RecyclerView.ViewHolder(binding.root)
 
     private var listQuran = ArrayList<SurahsItem>()
     fun setData(dataQuran: List<SurahsItem>?) {
         if (dataQuran == null) return
         listQuran.clear()
         listQuran.addAll(dataQuran)
-    }
-
-    private var onItemClickCallback: OnItemQuranClickCallback? = null
-
-    fun setOnItemClickCallback(onItemQuranClickCallback: OnItemQuranClickCallback) {
-        this.onItemClickCallback = onItemQuranClickCallback
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int1) = MyViewHolder(
@@ -43,7 +37,7 @@ class AmmaAdapter : RecyclerView.Adapter<AmmaAdapter.MyViewHolder>() {
             englishMeaning.text = data.englishNameTranslation
 
             holder.itemView.setOnClickListener {
-                onItemClickCallback?.onItemClicked(data)
+                click(data)
             }
 
 

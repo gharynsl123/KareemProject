@@ -10,17 +10,14 @@ import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.finalproject.data.response.quranres.SurahsItem
 import com.example.finalproject.databinding.FragmentQuranBinding
 import com.example.finalproject.ui.baca.BacaQuran
-import com.example.finalproject.utils.quranutil.OnItemQuranClickCallback
 
 class QuranFragment : Fragment() {
 
     private var _binding: FragmentQuranBinding? = null
     private val binding get() = _binding as FragmentQuranBinding
 
-    //view
     private var _viewModel: QuranViewModel? = null
     private val viewModel get() = _viewModel as QuranViewModel
 
@@ -50,6 +47,7 @@ class QuranFragment : Fragment() {
 
         viewModel.apply {
             getData()
+            //agar tidak terjadi layout skipping
             quranResponse.observe(viewLifecycleOwner) { mAdapter.setData(it) }
             isLoading.observe(viewLifecycleOwner) { showLoading(it) }
             isError.observe(viewLifecycleOwner) { showError(it) }

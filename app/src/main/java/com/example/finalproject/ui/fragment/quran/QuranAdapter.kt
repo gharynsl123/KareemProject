@@ -17,10 +17,6 @@ class QuranAdapter(private val click: (SurahsItem) -> Unit) : RecyclerView.Adapt
     private var quranListFiltered: ArrayList<SurahsItem> = ArrayList()
 
     fun setData(dataQuran: List<SurahsItem>?) {
-//        if (dataQuran == null) return
-//        listQuran.clear()
-//        listQuran.addAll(dataQuran)
-//        listQuran = arrayListOf<SurahsItem>()
         quranList = dataQuran as ArrayList<SurahsItem>
         quranListFiltered = quranList
         notifyDataSetChanged()

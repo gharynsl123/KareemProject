@@ -1,5 +1,6 @@
 package com.example.finalproject.ui.pagi
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -8,6 +9,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.finalproject.data.response.DzikirPagiResponseItem
 import com.example.finalproject.databinding.ActivityDzikirPagiBinding
+import com.example.finalproject.ui.baca.BacaQuran
+import com.example.finalproject.ui.fragment.quran.QuranAdapter
 
 class DzikirPagi : AppCompatActivity() {
 
@@ -22,6 +25,10 @@ class DzikirPagi : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         _binding = ActivityDzikirPagiBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        val mAdapter = DzikirPagiAdapter {}
+
+        binding.rvDzikirPagi.layoutManager = LinearLayoutManager(this@DzikirPagi)
+        binding.rvDzikirPagi.adapter = mAdapter
 
         setSupportActionBar(binding.toolbarTitle)
         binding.toolbarTitle.title = (binding.toolbarTitle.title)
@@ -32,18 +39,9 @@ class DzikirPagi : AppCompatActivity() {
 
         viewModel.apply {
             getData()
-            pagiResponse.observe(this@DzikirPagi) { showData(it) }
+            pagiResponse.observe(this@DzikirPagi) { mAdapter.setData(it) }
             isLoading.observe(this@DzikirPagi) { showLoading(it) }
             isError.observe(this@DzikirPagi) { showError(it) }
-        }
-    }
-
-    private fun showData(data: List<DzikirPagiResponseItem>?) {
-        binding.rvDzikirPagi.apply {
-            val mAdapter = DzikirPagiAdapter()
-            mAdapter.setData(data)
-            layoutManager = LinearLayoutManager(this@DzikirPagi)
-            adapter = mAdapter
         }
     }
 

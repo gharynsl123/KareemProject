@@ -22,6 +22,9 @@ class DzikirPetang : AppCompatActivity() {
         _binding = ActivityDzikirPetangBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val mAdapter = DzikirPetangAdapter{}
+        binding.rvDzikirPetang.layoutManager = LinearLayoutManager(this@DzikirPetang)
+        binding.rvDzikirPetang.adapter = mAdapter
         setSupportActionBar(binding.toolbarTitle)
         binding.toolbarTitle.title = (binding.toolbarTitle.title)
 
@@ -31,18 +34,9 @@ class DzikirPetang : AppCompatActivity() {
 
         viewModel.apply {
             getData()
-            petangResponse.observe(this@DzikirPetang) { showData(it) }
+            petangResponse.observe(this@DzikirPetang) { mAdapter.setData(it) }
             isLoading.observe(this@DzikirPetang) { showLoading(it) }
             isError.observe(this@DzikirPetang) { showError(it) }
-        }
-    }
-
-    private fun showData(data: List<DzikirPetangResponseItem>?) {
-        binding.rvDzikirPetang.apply {
-            val mAdapter = DzikirPetangAdapter()
-            mAdapter.setData(data)
-            layoutManager = LinearLayoutManager(this@DzikirPetang)
-            adapter = mAdapter
         }
     }
 
