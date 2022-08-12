@@ -1,6 +1,8 @@
-package com.example.finalproject.data.network.dzikir
+package com.example.finalproject.data.network
 
 import com.example.finalproject.BuildConfig
+import com.example.finalproject.BuildConfig.BASE_URL
+import com.example.finalproject.BuildConfig.QURAN_URL
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -9,8 +11,8 @@ import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-object DzikirApiClient {
-    fun getApiService(): DzikirApiService {
+object ApiClient {
+    fun getApiService(): ApiService {
         val httpLoggingInterceptor = if (BuildConfig.DEBUG) {
             HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
         } else {
@@ -24,12 +26,13 @@ object DzikirApiClient {
             .connectTimeout(30, TimeUnit.SECONDS)
             .build()
         return Retrofit.Builder()
-            .baseUrl(BuildConfig.BASE_URL)
+            .baseUrl(BASE_URL)
+            .baseUrl(QURAN_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
             .client(okHttpClient)
             .build()
-            .create(DzikirApiService::class.java)
+            .create(ApiService::class.java)
     }
 
     private fun defaultHttpClient(): Interceptor {

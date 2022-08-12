@@ -6,7 +6,6 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.finalproject.data.response.DzikirPetangResponseItem
 import com.example.finalproject.databinding.ActivityDzikirPetangBinding
 
 class DzikirPetang : AppCompatActivity() {
@@ -22,7 +21,7 @@ class DzikirPetang : AppCompatActivity() {
         _binding = ActivityDzikirPetangBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val mAdapter = DzikirPetangAdapter{}
+        val mAdapter = DzikirPetangAdapter {}
         binding.rvDzikirPetang.layoutManager = LinearLayoutManager(this@DzikirPetang)
         binding.rvDzikirPetang.adapter = mAdapter
         setSupportActionBar(binding.toolbarTitle)

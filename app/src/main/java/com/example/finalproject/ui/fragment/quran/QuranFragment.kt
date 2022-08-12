@@ -1,6 +1,5 @@
 package com.example.finalproject.ui.fragment.quran
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -11,7 +10,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.finalproject.databinding.FragmentQuranBinding
-import com.example.finalproject.ui.baca.BacaQuran
 
 class QuranFragment : Fragment() {
 
@@ -32,14 +30,7 @@ class QuranFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val mAdapter = QuranAdapter {
-            startActivity(
-                Intent(
-                    activity,
-                    BacaQuran::class.java
-                ).putExtra(BacaQuran.SURAH_DATA, it)
-            )
-        }
+        val mAdapter = QuranAdapter {}
         binding.rvQuran.layoutManager = LinearLayoutManager(activity)
         binding.rvQuran.adapter = mAdapter
 

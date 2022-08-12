@@ -18,7 +18,7 @@ import androidx.fragment.app.Fragment
 import com.example.finalproject.R
 import com.example.finalproject.databinding.FragmentProfileBinding
 import com.example.finalproject.ui.LoginActivity
-import com.example.finalproject.ui.main.MainActivity
+import com.example.finalproject.ui.MainActivity
 import com.google.firebase.auth.FirebaseAuth
 
 class ProfileFragment : Fragment() {

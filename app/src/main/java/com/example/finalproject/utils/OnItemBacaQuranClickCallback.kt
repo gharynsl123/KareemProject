@@ -1,4 +1,4 @@
-package com.example.finalproject.utils.quranutil
+package com.example.finalproject.utils
 
 import com.example.finalproject.data.response.quranres.AyahsItem
 

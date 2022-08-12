@@ -2,7 +2,7 @@ package com.example.finalproject.ui.pagi
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.finalproject.data.network.dzikir.DzikirApiClient
+import com.example.finalproject.data.network.ApiClient
 import com.example.finalproject.data.response.DzikirPagiResponseItem
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
@@ -16,7 +16,7 @@ class PagiViewModel : ViewModel() {
         responseHandler: (List<DzikirPagiResponseItem>) -> Unit,
         errorHandler: (Throwable) -> Unit
     ) {
-        DzikirApiClient.getApiService().getDzikirPagi().subscribeOn(Schedulers.io()).observeOn(
+        ApiClient.getApiService().getDzikirPagi().subscribeOn(Schedulers.io()).observeOn(
             AndroidSchedulers.mainThread()
         ).subscribe({
             responseHandler(it)

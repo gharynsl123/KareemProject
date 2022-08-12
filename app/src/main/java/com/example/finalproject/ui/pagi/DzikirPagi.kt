@@ -1,16 +1,12 @@
 package com.example.finalproject.ui.pagi
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.finalproject.data.response.DzikirPagiResponseItem
 import com.example.finalproject.databinding.ActivityDzikirPagiBinding
-import com.example.finalproject.ui.baca.BacaQuran
-import com.example.finalproject.ui.fragment.quran.QuranAdapter
 
 class DzikirPagi : AppCompatActivity() {
 

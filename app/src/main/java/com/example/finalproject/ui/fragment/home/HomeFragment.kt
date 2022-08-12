@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.finalproject.databinding.FragmentHomeBinding
-import com.example.finalproject.ui.baca.BacaQuran
 import com.example.finalproject.ui.pagi.DzikirPagi
 import com.example.finalproject.ui.petang.DzikirPetang
 
@@ -37,14 +36,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val mAdapter = AmmaAdapter {
-            startActivity(
-                Intent(
-                    activity,
-                    BacaQuran::class.java
-                ).putExtra(BacaQuran.SURAH_DATA, it)
-            )
-        }
+
         binding.apply {
             dzikirPagi.setOnClickListener {
                 activity?.let {
@@ -59,14 +51,14 @@ class HomeFragment : Fragment() {
                 }
             }
             rvHome.layoutManager = LinearLayoutManager(activity)
-            rvHome.adapter = mAdapter
+            rvHome.adapter = AmmaAdapter()
         }
 
         _viewModel = ViewModelProvider(this).get(AmmaViewModel::class.java)
 
         viewModel.apply {
             getData()
-            quranResponse.observe(viewLifecycleOwner) { mAdapter.setData(it) }
+            quranResponse.observe(viewLifecycleOwner) { AmmaAdapter().setData(it) }
             isLoading.observe(viewLifecycleOwner) { showLoading(it) }
             isError.observe(viewLifecycleOwner) { showError(it) }
         }

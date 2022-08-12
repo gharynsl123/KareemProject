@@ -7,9 +7,9 @@ import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finalproject.data.response.quranres.SurahsItem
 import com.example.finalproject.databinding.ItemListQuranBinding
-import com.example.finalproject.utils.quranutil.OnItemQuranClickCallback
 
-class QuranAdapter(private val click: (SurahsItem) -> Unit) : RecyclerView.Adapter<QuranAdapter.MyViewHolder>(),
+class QuranAdapter(private val click: (SurahsItem) -> Unit) :
+    RecyclerView.Adapter<QuranAdapter.MyViewHolder>(),
     Filterable {
     private var listQuran = ArrayList<SurahsItem>()
 

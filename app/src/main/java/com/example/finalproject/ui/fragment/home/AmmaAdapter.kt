@@ -5,12 +5,11 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.finalproject.data.response.quranres.SurahsItem
 import com.example.finalproject.databinding.ItemListQuranBinding
-import com.example.finalproject.utils.quranutil.OnItemQuranClickCallback
 import kotlin.Int as Int1
-import kotlin.Int.Companion as Int
 
 
-class AmmaAdapter (private val click: (SurahsItem) -> Unit) : RecyclerView.Adapter<AmmaAdapter.MyViewHolder>() {
+class AmmaAdapter :
+    RecyclerView.Adapter<AmmaAdapter.MyViewHolder>() {
 
     class MyViewHolder(val binding: ItemListQuranBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -36,15 +35,10 @@ class AmmaAdapter (private val click: (SurahsItem) -> Unit) : RecyclerView.Adapt
             revelationType.text = data.revelationType
             englishMeaning.text = data.englishNameTranslation
 
-            holder.itemView.setOnClickListener {
-                click(data)
-            }
-
-
         }
     }
 
-    override fun getItemCount()= listQuran.size
+    override fun getItemCount() = listQuran.size
 
 
 }

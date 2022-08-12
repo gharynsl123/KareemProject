@@ -48,9 +48,9 @@
         android:layout_height="wrap_content"
         android:padding="18dp"
         android:text="@string/notif"
-        app:layout_constraintTop_toBottomOf="@+id/userEmail"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userEmail" />
 
 
     <Button

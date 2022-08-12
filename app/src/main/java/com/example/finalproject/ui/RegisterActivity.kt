@@ -8,7 +8,6 @@ import android.util.Patterns
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.finalproject.databinding.ActivityRegisterBinding
-import com.example.finalproject.ui.main.MainActivity
 import com.google.firebase.auth.FirebaseAuth
 
 
