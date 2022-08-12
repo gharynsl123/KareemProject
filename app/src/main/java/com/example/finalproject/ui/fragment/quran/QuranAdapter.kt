@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.finalproject.data.response.quranres.SurahsItem
 import com.example.finalproject.databinding.ItemListQuranBinding
 
-class QuranAdapter(private val click: (SurahsItem) -> Unit) :
+class QuranAdapter :
     RecyclerView.Adapter<QuranAdapter.MyViewHolder>(),
     Filterable {
     private var listQuran = ArrayList<SurahsItem>()
@@ -40,10 +40,6 @@ class QuranAdapter(private val click: (SurahsItem) -> Unit) :
             revelationType.text = data.revelationType
             englishMeaning.text = data.englishNameTranslation
             tvArabic.text = data.name
-
-            holder.itemView.setOnClickListener {
-                click(data)
-            }
         }
 
     }

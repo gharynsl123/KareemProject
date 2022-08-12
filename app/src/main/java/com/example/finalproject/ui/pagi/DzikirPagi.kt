@@ -21,17 +21,20 @@ class DzikirPagi : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         _binding = ActivityDzikirPagiBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val mAdapter = DzikirPagiAdapter {}
-
-        binding.rvDzikirPagi.layoutManager = LinearLayoutManager(this@DzikirPagi)
-        binding.rvDzikirPagi.adapter = mAdapter
-
-        setSupportActionBar(binding.toolbarTitle)
-        binding.toolbarTitle.title = (binding.toolbarTitle.title)
 
         supportActionBar?.setDisplayShowTitleEnabled(false)
 
+        val mAdapter = DzikirPagiAdapter {}
+
         _viewModel = ViewModelProvider(this).get(PagiViewModel::class.java)
+
+        binding.apply {
+            rvDzikirPagi.layoutManager = LinearLayoutManager(this@DzikirPagi)
+            rvDzikirPagi.adapter = mAdapter
+
+            setSupportActionBar(toolbarTitle)
+            toolbarTitle.title = (binding.toolbarTitle.title)
+        }
 
         viewModel.apply {
             getData()

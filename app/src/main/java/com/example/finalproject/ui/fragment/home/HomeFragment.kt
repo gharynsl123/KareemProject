@@ -66,13 +66,9 @@ class HomeFragment : Fragment() {
 
     private fun showLoading(isLoading: Boolean?) {
         if (isLoading == true) {
-            binding.apply {
-                rvHome.visibility = View.INVISIBLE
-            }
+            binding.rvHome.visibility = View.INVISIBLE
         } else {
-            binding.apply {
-                rvHome.visibility = View.VISIBLE
-            }
+            binding.rvHome.visibility = View.VISIBLE
         }
     }
 

@@ -30,16 +30,17 @@ class QuranFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val mAdapter = QuranAdapter {}
-        binding.rvQuran.layoutManager = LinearLayoutManager(activity)
-        binding.rvQuran.adapter = mAdapter
-
         _viewModel = ViewModelProvider(this).get(QuranViewModel::class.java)
+
+        binding.apply {
+            rvQuran.layoutManager = LinearLayoutManager(activity)
+            rvQuran.adapter = QuranAdapter()
+        }
 
         viewModel.apply {
             getData()
             //agar tidak terjadi layout skipping
-            quranResponse.observe(viewLifecycleOwner) { mAdapter.setData(it) }
+            quranResponse.observe(viewLifecycleOwner) { QuranAdapter().setData(it) }
             isLoading.observe(viewLifecycleOwner) { showLoading(it) }
             isError.observe(viewLifecycleOwner) { showError(it) }
 

@@ -20,16 +20,19 @@ class DzikirPetang : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         _binding = ActivityDzikirPetangBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        val mAdapter = DzikirPetangAdapter {}
-        binding.rvDzikirPetang.layoutManager = LinearLayoutManager(this@DzikirPetang)
-        binding.rvDzikirPetang.adapter = mAdapter
-        setSupportActionBar(binding.toolbarTitle)
-        binding.toolbarTitle.title = (binding.toolbarTitle.title)
-
         supportActionBar?.setDisplayShowTitleEnabled(false)
 
+        val mAdapter = DzikirPetangAdapter {}
+
         _viewModel = ViewModelProvider(this).get(PetangViewModel::class.java)
+
+        binding.apply {
+            rvDzikirPetang.layoutManager = LinearLayoutManager(this@DzikirPetang)
+            rvDzikirPetang.adapter = mAdapter
+
+            setSupportActionBar(toolbarTitle)
+            toolbarTitle.title = (binding.toolbarTitle.title)
+        }
 
         viewModel.apply {
             getData()

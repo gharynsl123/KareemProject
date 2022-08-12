@@ -38,13 +38,15 @@ class LoginActivity : AppCompatActivity() {
         fireBaseAuth = FirebaseAuth.getInstance()
         checkUser()
 
-        binding.tvRegister.setOnClickListener {
-            startActivity(Intent(this, RegisterActivity::class.java))
+        binding.apply {
+            tvRegister.setOnClickListener {
+                startActivity(Intent(this@LoginActivity, RegisterActivity::class.java))
+            }
+            btnLog.setOnClickListener {
+                validateDate()
+            }
         }
 
-        binding.btnLog.setOnClickListener {
-            validateDate()
-        }
     }
 
     private fun validateDate() {
