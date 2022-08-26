@@ -2,7 +2,7 @@ package com.example.finalproject.ui.fragment.quran
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.finalproject.data.network.ApiClient
+import com.example.finalproject.data.network.ApiClientQuran
 import com.example.finalproject.data.response.quranres.SurahsItem
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.core.Flowable
@@ -36,7 +36,7 @@ class QuranViewModel : ViewModel() {
     fun searchQuranByQuery(query: String) {
         isSearchLoading.value = true
         loadData(
-            ApiClient.getApiService().searchQuranByQuery(query),
+            ApiClientQuran.getApiService().searchQuranByQuery(query),
             {
                 quranResponse.value = it.data?.surahs
                 isSearchError.value = null
@@ -54,7 +54,7 @@ class QuranViewModel : ViewModel() {
         responHandle: (List<SurahsItem>?) -> Unit,
         errorHandler: (Throwable) -> Unit
     ) {
-        ApiClient.getApiService().getQuran().subscribeOn(Schedulers.io())
+        ApiClientQuran.getApiService().getQuran().subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 responHandle(it.data?.surahs)
@@ -69,7 +69,7 @@ class QuranViewModel : ViewModel() {
             isLoading.value = false
             quranResponse.value = it
         }, {
-            isLoading.value = true
+            isLoading.value = false
             isError.value = it
         })
     }

@@ -9,6 +9,7 @@ import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.finalproject.data.response.quranres.SurahsItem
 import com.example.finalproject.databinding.FragmentQuranBinding
 
 class QuranFragment : Fragment() {
@@ -32,19 +33,22 @@ class QuranFragment : Fragment() {
 
         _viewModel = ViewModelProvider(this).get(QuranViewModel::class.java)
 
-        binding.apply {
-            rvQuran.layoutManager = LinearLayoutManager(activity)
-            rvQuran.adapter = QuranAdapter()
-        }
-
         viewModel.apply {
             getData()
             //agar tidak terjadi layout skipping
-            quranResponse.observe(viewLifecycleOwner) { QuranAdapter().setData(it) }
+            quranResponse.observe(viewLifecycleOwner) { showData(it) }
             isLoading.observe(viewLifecycleOwner) { showLoading(it) }
             isError.observe(viewLifecycleOwner) { showError(it) }
-
             setupSearchView()
+        }
+    }
+
+    private fun showData(list: List<SurahsItem>?) {
+        binding.apply {
+            val mAdapter = QuranAdapter()
+            mAdapter.setData(list)
+            rvQuran.layoutManager = LinearLayoutManager(activity)
+            rvQuran.adapter = mAdapter
         }
     }
 
@@ -56,7 +60,6 @@ class QuranFragment : Fragment() {
                 query.let {
                     viewModel.searchQuranByQuery(query)
                 }
-
                 return true
             }
 

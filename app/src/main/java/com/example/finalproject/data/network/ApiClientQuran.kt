@@ -11,7 +11,7 @@ import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-object ApiClient {
+object ApiClientQuran {
     fun getApiService(): ApiService {
         val httpLoggingInterceptor = if (BuildConfig.DEBUG) {
             HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
@@ -26,7 +26,6 @@ object ApiClient {
             .connectTimeout(30, TimeUnit.SECONDS)
             .build()
         return Retrofit.Builder()
-            .baseUrl(BASE_URL)
             .baseUrl(QURAN_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava3CallAdapterFactory.create())

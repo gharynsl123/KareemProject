@@ -6,6 +6,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.finalproject.data.response.DzikirPetangResponseItem
 import com.example.finalproject.databinding.ActivityDzikirPetangBinding
 
 class DzikirPetang : AppCompatActivity() {
@@ -22,36 +23,38 @@ class DzikirPetang : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.setDisplayShowTitleEnabled(false)
 
-        val mAdapter = DzikirPetangAdapter {}
-
         _viewModel = ViewModelProvider(this).get(PetangViewModel::class.java)
 
+        viewModel.apply {
+            getData()
+            petangResponse.observe(this@DzikirPetang) { showData(it) }
+            isLoading.observe(this@DzikirPetang) { showLoading(it) }
+            isError.observe(this@DzikirPetang) { showError(it) }
+        }
+    }
+
+    private fun showData(data: List<DzikirPetangResponseItem>) {
         binding.apply {
+            val mAdapter = DzikirPetangAdapter {}
+            mAdapter.setData(data)
             rvDzikirPetang.layoutManager = LinearLayoutManager(this@DzikirPetang)
             rvDzikirPetang.adapter = mAdapter
 
             setSupportActionBar(toolbarTitle)
             toolbarTitle.title = (binding.toolbarTitle.title)
         }
-
-        viewModel.apply {
-            getData()
-            petangResponse.observe(this@DzikirPetang) { mAdapter.setData(it) }
-            isLoading.observe(this@DzikirPetang) { showLoading(it) }
-            isError.observe(this@DzikirPetang) { showError(it) }
-        }
     }
 
     private fun showLoading(isLoading: Boolean?) {
         if (isLoading == true) {
             binding.apply {
-                progressMain.visibility = View.VISIBLE
                 rvDzikirPetang.visibility = View.INVISIBLE
+                progressMain.visibility = View.VISIBLE
             }
         } else {
             binding.apply {
-                progressMain.visibility = View.INVISIBLE
                 rvDzikirPetang.visibility = View.VISIBLE
+                progressMain.visibility = View.INVISIBLE
             }
         }
     }

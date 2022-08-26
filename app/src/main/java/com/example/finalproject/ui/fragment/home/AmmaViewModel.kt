@@ -2,7 +2,7 @@ package com.example.finalproject.ui.fragment.home
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.finalproject.data.network.ApiClient
+import com.example.finalproject.data.network.ApiClientQuran
 import com.example.finalproject.data.response.quranres.SurahsItem
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
@@ -17,10 +17,10 @@ class AmmaViewModel : ViewModel() {
         responHandle: (List<SurahsItem>?) -> Unit,
         errorHandler: (Throwable) -> Unit
     ) {
-        ApiClient.getApiService().getQuran().subscribeOn(Schedulers.io())
+        ApiClientQuran.getApiService().getQuran().subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                responHandle(it.data?.surahs as List<SurahsItem>?)
+                responHandle(it.data?.surahs)
             }, {
                 errorHandler(it)
             })
@@ -32,7 +32,7 @@ class AmmaViewModel : ViewModel() {
             isLoading.value = false
             quranResponse.value = it
         }, {
-            isLoading.value = true
+            isLoading.value = false
             isError.value = it
         })
     }

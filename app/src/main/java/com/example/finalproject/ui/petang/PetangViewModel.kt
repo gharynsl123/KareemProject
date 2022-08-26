@@ -2,7 +2,7 @@ package com.example.finalproject.ui.petang
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.finalproject.data.network.ApiClient
+import com.example.finalproject.data.network.ApiClientPagi
 import com.example.finalproject.data.response.DzikirPetangResponseItem
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
@@ -16,7 +16,7 @@ class PetangViewModel : ViewModel() {
         responseHandler: (List<DzikirPetangResponseItem>) -> Unit,
         errorHandler: (Throwable) -> Unit
     ) {
-        ApiClient.getApiService().getDzikirPetang().subscribeOn(Schedulers.io()).observeOn(
+        ApiClientPagi.getApiService().getDzikirPetang().subscribeOn(Schedulers.io()).observeOn(
             AndroidSchedulers.mainThread()
         ).subscribe({
             responseHandler(it)
@@ -31,7 +31,7 @@ class PetangViewModel : ViewModel() {
             isLoading.value = false
             petangResponse.value = it
         }, {
-            isLoading.value = true
+            isLoading.value = false
             isError.value = it
         })
     }

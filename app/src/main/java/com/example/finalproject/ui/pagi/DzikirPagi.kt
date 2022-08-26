@@ -6,6 +6,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.finalproject.data.response.DzikirPagiResponseItem
 import com.example.finalproject.databinding.ActivityDzikirPagiBinding
 
 class DzikirPagi : AppCompatActivity() {
@@ -24,23 +25,25 @@ class DzikirPagi : AppCompatActivity() {
 
         supportActionBar?.setDisplayShowTitleEnabled(false)
 
-        val mAdapter = DzikirPagiAdapter {}
-
         _viewModel = ViewModelProvider(this).get(PagiViewModel::class.java)
 
+        viewModel.apply {
+            getData()
+            pagiResponse.observe(this@DzikirPagi) { showData(it) }
+            isLoading.observe(this@DzikirPagi) { showLoading(it) }
+            isError.observe(this@DzikirPagi) { showError(it) }
+        }
+    }
+
+    private fun showData(data: List<DzikirPagiResponseItem>) {
         binding.apply {
+            val mAdapter = DzikirPagiAdapter {}
+            mAdapter.setData(data)
             rvDzikirPagi.layoutManager = LinearLayoutManager(this@DzikirPagi)
             rvDzikirPagi.adapter = mAdapter
 
             setSupportActionBar(toolbarTitle)
             toolbarTitle.title = (binding.toolbarTitle.title)
-        }
-
-        viewModel.apply {
-            getData()
-            pagiResponse.observe(this@DzikirPagi) { mAdapter.setData(it) }
-            isLoading.observe(this@DzikirPagi) { showLoading(it) }
-            isError.observe(this@DzikirPagi) { showError(it) }
         }
     }
 

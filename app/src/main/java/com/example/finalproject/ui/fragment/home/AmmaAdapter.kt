@@ -34,7 +34,6 @@ class AmmaAdapter :
             englishName.text = data.englishName
             revelationType.text = data.revelationType
             englishMeaning.text = data.englishNameTranslation
-
         }
     }
 

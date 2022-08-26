@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.finalproject.data.response.quranres.SurahsItem
 import com.example.finalproject.databinding.FragmentHomeBinding
 import com.example.finalproject.ui.pagi.DzikirPagi
 import com.example.finalproject.ui.petang.DzikirPetang
@@ -35,8 +36,6 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
         binding.apply {
             dzikirPagi.setOnClickListener {
                 activity?.let {
@@ -50,17 +49,23 @@ class HomeFragment : Fragment() {
                     it.startActivity(intent)
                 }
             }
-            rvHome.layoutManager = LinearLayoutManager(activity)
-            rvHome.adapter = AmmaAdapter()
         }
 
         _viewModel = ViewModelProvider(this).get(AmmaViewModel::class.java)
 
         viewModel.apply {
             getData()
-            quranResponse.observe(viewLifecycleOwner) { AmmaAdapter().setData(it) }
+            quranResponse.observe(viewLifecycleOwner) { showData(it) }
             isLoading.observe(viewLifecycleOwner) { showLoading(it) }
             isError.observe(viewLifecycleOwner) { showError(it) }
+        }
+    }
+    private fun showData(list: List<SurahsItem>?) {
+        binding.apply {
+            val mAdapter = AmmaAdapter()
+            mAdapter.setData(list)
+            rvHome.layoutManager = LinearLayoutManager(activity)
+            rvHome.adapter = mAdapter
         }
     }
 
@@ -75,6 +80,4 @@ class HomeFragment : Fragment() {
     private fun showError(error: Throwable?) {
         Log.e("MainActivity", "showError: $error")
     }
-
-
 }
