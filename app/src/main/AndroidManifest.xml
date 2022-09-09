@@ -17,16 +17,16 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".ui.petang.DzikirPetang"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".ui.pagi.DzikirPagi"
             android:exported="true" />
         <activity
             android:name=".ui.RegisterActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".ui.LoginActivity"
-            android:exported="true"/>
+            android:exported="true" />
         <activity
             android:name=".ui.SplashScreen"
             android:exported="true"

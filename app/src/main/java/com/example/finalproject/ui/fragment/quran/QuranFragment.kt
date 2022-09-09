@@ -87,6 +87,4 @@ class QuranFragment : Fragment() {
     private fun showError(error: Throwable?) {
         Log.e("MainActivity", "showError: $error")
     }
-
-
 }

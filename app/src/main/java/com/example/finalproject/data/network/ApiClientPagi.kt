@@ -2,7 +2,6 @@ package com.example.finalproject.data.network
 
 import com.example.finalproject.BuildConfig
 import com.example.finalproject.BuildConfig.BASE_URL
-import com.example.finalproject.BuildConfig.QURAN_URL
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

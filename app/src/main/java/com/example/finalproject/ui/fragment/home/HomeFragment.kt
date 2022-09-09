@@ -60,6 +60,7 @@ class HomeFragment : Fragment() {
             isError.observe(viewLifecycleOwner) { showError(it) }
         }
     }
+
     private fun showData(list: List<SurahsItem>?) {
         binding.apply {
             val mAdapter = AmmaAdapter()
