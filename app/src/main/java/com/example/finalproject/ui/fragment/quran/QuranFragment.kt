@@ -41,6 +41,7 @@ class QuranFragment : Fragment() {
             isError.observe(viewLifecycleOwner) { showError(it) }
             setupSearchView()
         }
+
     }
 
     private fun showData(list: List<SurahsItem>?) {
@@ -54,20 +55,20 @@ class QuranFragment : Fragment() {
 
 
     private fun setupSearchView() {
+
         binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 Log.d("ShowData", query!!)
-                query.let {
-                    viewModel.searchQuranByQuery(query)
-                }
+
+                query.let { viewModel.searchQuranByQuery(query) }
                 return true
             }
 
             override fun onQueryTextChange(query: String?): Boolean {
                 return false
             }
-
         })
+
     }
 
     private fun showLoading(isLoading: Boolean?) {

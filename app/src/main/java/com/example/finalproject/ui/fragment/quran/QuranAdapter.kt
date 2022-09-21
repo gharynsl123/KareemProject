@@ -8,9 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.finalproject.data.response.quranres.SurahsItem
 import com.example.finalproject.databinding.ItemListQuranBinding
 
-class QuranAdapter :
-    RecyclerView.Adapter<QuranAdapter.MyViewHolder>(),
+class QuranAdapter : RecyclerView.Adapter<QuranAdapter.MyViewHolder>(),
     Filterable {
+
     private var listQuran = ArrayList<SurahsItem>()
 
     private var quranList: ArrayList<SurahsItem> = ArrayList()
@@ -22,13 +22,10 @@ class QuranAdapter :
         notifyDataSetChanged()
     }
 
-
     class MyViewHolder(val binding: ItemListQuranBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = MyViewHolder(
-
         ItemListQuranBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-
     )
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
@@ -77,4 +74,5 @@ class QuranAdapter :
             }
         }
     }
+
 }

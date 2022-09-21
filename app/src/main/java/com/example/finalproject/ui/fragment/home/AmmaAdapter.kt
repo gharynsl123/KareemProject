@@ -7,9 +7,7 @@ import com.example.finalproject.data.response.quranres.SurahsItem
 import com.example.finalproject.databinding.ItemListQuranBinding
 import kotlin.Int as Int1
 
-
-class AmmaAdapter :
-    RecyclerView.Adapter<AmmaAdapter.MyViewHolder>() {
+class AmmaAdapter : RecyclerView.Adapter<AmmaAdapter.MyViewHolder>() {
 
     class MyViewHolder(val binding: ItemListQuranBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -25,7 +23,6 @@ class AmmaAdapter :
         ItemListQuranBinding.inflate(LayoutInflater.from(parent.context), parent, false)
     )
 
-
     override fun onBindViewHolder(holder: MyViewHolder, position: Int1) {
 
         val data = listQuran[position]
@@ -38,6 +35,5 @@ class AmmaAdapter :
     }
 
     override fun getItemCount() = listQuran.size
-
 
 }

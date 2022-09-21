@@ -8,10 +8,10 @@ import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 
 class AmmaViewModel : ViewModel() {
+
     val quranResponse = MutableLiveData<List<SurahsItem>?>()
     val isLoading = MutableLiveData<Boolean>()
     val isError = MutableLiveData<Throwable>()
-
 
     fun getQuran(
         responHandle: (List<SurahsItem>?) -> Unit,
